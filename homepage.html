@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <title>Movies in My Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <style>
+    .hidden {
+  display: none;
+}
+  </style>
+  <body class="font-Poppins bg-gray-100">
+    <header class="bg-white shadow">
+      <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+        <img alt="BookMyShow Logo" class="h-10" src="Assets/nave_logo.png" />
+        <div class="flex space-x-4">
+          <input
+            class="border rounded px-4 py-2 w-96"
+            placeholder="Search for Movies, Events, Plays, Sports and Activities"
+            type="text"
+          />
+          <button class="bg-red-600 text-white px-4 py-2 rounded">
+            Search
+          </button>
+        </div>
+        <div id="searchPopup" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+          <div class="bg-white p-6 rounded shadow-lg w-1/3">
+            <h2 class="text-lg font-bold mb-4">Search Results</h2>
+            <ul id="searchResults" class="list-disc pl-5"></ul>
+            <button id="closeSearchPopup" class="bg-red-600 text-white px-4 py-2 rounded mt-4">Close</button>
+          </div>
+        </div>
+        <div class="flex space-x-4">
+          <a id="postMovieLink" class="text-gray-700" href="#">Post</a>
+          <p class="text-gray-700" id="login_user_name">Name</p>
+          <button id="logoutBtn">Logout</button>
+        </div>
+      </div>
+    </header>
+    <div class="container mx-auto px-4 py-4">
+      <div class="flex space-x-4">
+        <!-- Sidebar -->
+        <aside class="w-1/4 bg-white p-4 shadow rounded">
+          <h2 class="text-lg font-bold mb-4">Filters</h2>
+          <div class="mb-4">
+            <h3 class="font-semibold mb-2">Languages</h3>
+            <select class="border rounded w-full px-2 py-1">
+              <option>English</option>
+              <option>Hindi</option>
+              <option>Tamil</option>
+              <option>Telugu</option>
+              <option>Malayalam</option>
+              <option>Kannada</option>
+              <option>Bengali</option>
+              <option>Marathi</option>
+              <option>Punjabi</option>
+              <option>Gujarati</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <h3 class="font-semibold mb-2">Genres</h3>
+            <select class="border rounded w-full px-2 py-1">
+              <option>Action</option>
+              <option>Comedy</option>
+              <option>Drama</option>
+              <option>Horror</option>
+              <option>Romance</option>
+              <option>Thriller</option>
+              <option>Sci-Fi</option>
+              <option>Fantasy</option>
+              <option>Adventure</option>
+              <option>Animation</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <h3 class="font-semibold mb-2">Format</h3>
+            <select class="border rounded w-full px-2 py-1">
+              <option>All</option>
+              <option>2D</option>
+              <option>3D</option>
+              <option>IMAX</option>
+              <option>4DX</option>
+            </select>
+          </div>
+          <button class="bg-red-600 text-white px-4 py-2 rounded w-full">
+            Apply
+          </button>
+        </aside>
+        <!-- Main Content -->
+        <main class="w-3/4">
+          <div class="bg-white p-4 shadow rounded mb-4">
+            <div class="carousel relative overflow-hidden rounded">
+              <div
+                id="slide-images"
+                class="flex transition-transform duration-500"
+                style="width: 100%;"
+              >
+                <img
+                  alt="Credit Card Offer"
+                  class="w-full h-48 object-cover flex-shrink-0"
+                  src="Assets/main_img-1.avif"
+                  style="width: 100%; height: auto;"
+                />
+                <img
+                  src="Assets/main_img_2.avif"
+                  class="w-full h-48 object-cover flex-shrink-0"
+                  alt=""
+                  style="width: 100%; height: auto;"
+                />
+                <img
+                  src="Assets/main_img-3.avif"
+                  class="w-full h-48 object-cover flex-shrink-0"
+                  alt=""
+                  style="width: 100%; height: auto;"
+                />
+              </div>
+              <button
+                id="prev-btn"
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-l"
+              >
+                &#10094;
+              </button>
+              <button
+                id="next-btn"
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-4 py-2 rounded-r"
+              >
+                &#10095;
+              </button>
+            </div>
+          </div>
+          <div class="bg-white p-4 shadow rounded mb-4">
+            <h2 class="text-lg font-bold mb-4">Movies in My Website</h2>
+            <div
+              id="movies-container"
+              class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+            >
+            
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <footer class="bg-white shadow mt-4">
+      <div class="container mx-auto px-4 py-4" style="display: flex; align-items: center; justify-content: center;">
+        <div class="flex justify-between items-center">
+          <p class="text-gray-600">© 2023 My Website. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <div id="postMovieModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded shadow-lg w-1/3">
+        <h2 class="text-lg font-bold mb-4">Add a New Movie</h2>
+        <form id="postMovieForm">
+          <div class="mb-4">
+            <label for="movieTitle" class="block font-semibold mb-2">Movie Title</label>
+            <input id="movieTitle" type="text" class="border rounded w-full px-2 py-1" placeholder="Enter movie title" required />
+          </div>
+          <div class="mb-4">
+            <label for="movieGenre" class="block font-semibold mb-2">Genre (Comma-separated)</label>
+            <input id="movieGenre" type="text" class="border rounded w-full px-2 py-1" placeholder="Enter genres (e.g., Drama, Comedy)" required />
+          </div>
+          <div class="mb-4">
+            <label for="movieLanguage" class="block font-semibold mb-2">Language</label>
+            <input id="movieLanguage" type="text" class="border rounded w-full px-2 py-1" placeholder="Enter language (e.g., English)" required />
+          </div>
+          <div class="mb-4">
+            <label for="moviePoster" class="block font-semibold mb-2">Poster URL</label>
+            <input id="moviePoster" type="url" class="border rounded w-full px-2 py-1" placeholder="Enter poster URL" required />
+          </div>
+          <div class="mb-4">
+            <label for="movieReleaseDate" class="block font-semibold mb-2">Release Date</label>
+            <input id="movieReleaseDate" type="date" class="border rounded w-full px-2 py-1" required />
+          </div>
+          <div class="mb-4">
+            <label for="movieRating" class="block font-semibold mb-2">Rating</label>
+            <input id="movieRating" type="number" class="border rounded w-full px-2 py-1" placeholder="Enter rating (1-10)" min="1" max="10" required />
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button type="button" id="cancelPost" class="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Add Movie</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>
