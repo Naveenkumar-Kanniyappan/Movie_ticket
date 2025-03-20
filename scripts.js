@@ -376,3 +376,4 @@ if (window.location.pathname.includes("homepage.html")) {
     closeSearchPopup.addEventListener("click", () => {
       searchPopup.classList.add("hidden");
     });
+    // -----------------
