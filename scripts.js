@@ -16,7 +16,7 @@ if (window.location.pathname.includes("homepage.html")) {
   });
   }
   
-  if (window.location.pathname.includes("homepage.html")) {
+  if (window.location.pathname.includes("index.html")) {
   let navegate = document.getElementById("logoutBtn");
   navegate.addEventListener("click", function () {
   localStorage.removeItem("loggedIn");
@@ -375,5 +375,4 @@ if (window.location.pathname.includes("homepage.html")) {
   
     closeSearchPopup.addEventListener("click", () => {
       searchPopup.classList.add("hidden");
-    });
-    // -----------------
+});

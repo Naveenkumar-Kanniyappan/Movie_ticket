@@ -49,7 +49,7 @@ loginForm.addEventListener("submit", (e) => {
     if (userExists) {
       localStorage.setItem("loggedIn", "true");
       alert("Login successful!");
-      window.location.href = "homepage.html";
+      window.location.href = "index.html";
     } else {
       alert("Invalid credentials or user not registered.");
     }
@@ -64,7 +64,7 @@ loginForm.addEventListener("submit", (e) => {
     localStorage.setItem("users", JSON.stringify(users));
     localStorage.setItem("loggedIn", "true");
     alert("Registration successful!");
-    window.location.href = "homepage.html";
+    window.location.href = "index.html";
   }
 });
 
